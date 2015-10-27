@@ -46,7 +46,7 @@ Create a working directory (e.g., work) and clone the following repositories.
 server:
 		
 		mkdir /tmp/server
-		./server -m <num_of_threads> ../sample_dat/1000G.pbwt -r 2185 -c 10000 -d /tmp/server/ -k /tmp/server/
+		./server -m <num_of_threads> -f ../sample_dat/1000G.pbwt -r 2185 -c 10000 -d /tmp/server/ -k /tmp/server/
 
 Client:
 
