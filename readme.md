@@ -43,7 +43,7 @@ Create a working directory (e.g., work) and clone the following repositories.
 	* GMP (libgmp-dev)
 
 # Running crypto-PBWT with a sample data
-server:
+Server:
 		
 		mkdir /tmp/server
 		./server -m <num_of_threads> -f ../sample_dat/1000G.pbwt -r 2185 -c 10000 -d /tmp/server/ -k /tmp/server/
