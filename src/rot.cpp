@@ -40,99 +40,6 @@ void ROT::Server::readPubkey(std::string& pubFile)
 	Load(pub, pubFile);
 }
 
-/**
-void ROT::Server::getResult(std::string& query, int ran0, int ran1)
-{
-	Elgamal::CipherText et0;
-	CipherTextVec et1;
-	std::ifstream ifs(query.c_str(), std::ios::binary);
-	ifs >> et0;
-
-	Elgamal::CipherText c;
-	Elgamal::CipherText d;
-	Elgamal::CipherText e;
-
-	for(int i=0;i<L1;i++){
-		ifs >> c;
-		et1.push_back(c);
-	}
-
-	res_v0.resize(L0*2);
-	res_v1.resize(L0*2);
-
-	CipherTextVec::iterator it;
-	CipherTextVec::iterator start;
-	int L, r, tmpr=0, ran;
-	int *v;
-	for(int x=0;x<2;x++){
-		if(x==0){
-			v=v0;
-			L=L0;
-			ran=ran0;
-			it = res_v0.begin();
-			start = res_v0.begin();
-		}else{
-			v=v1;
-			L=L1;
-			ran=ran1;
-			it = res_v1.begin();
-			start = res_v1.begin();
-		}
-		for(int i=0;i<prev_r0;i++){
-			it++;
-			it++;
-		}
-		r = ran%L;
-		for(int i=0;i<L0;i++){
-			e.clear();
-			for(int j=0;j<L1;j++){
-				int k = v[i*L1+j];
-				k += r;
-				k = k%L;
-				c = et1[ (j+prev_r1)%L1 ];
-				c.mul(k);
-				e.add(c);
-			}
-			pub.enc(c,(i + prev_r0),rg);
-			c.neg();
-			c.add(et0);
-			int tr = rand();
-			c.mul(tr);
-			c.add(e);
-			
-			pub.enc(d,(i + prev_r0 - L0),rg);
-			d.neg();
-			d.add(et0);
-			tr = rand();
-			d.mul(tr);
-			d.add(e);
-			
-			if(i+prev_r0==L0){
-				it = start;
-			}
-			int sel = rg.get32()%2;
-			if(sel==0){
-				*it=c;
-				it++;
-				*it=d;
-				it++;
-			}else{
-				*it=d;
-				it++;
-				*it=c;
-				it++;
-			}
-	    }
-		if(x==0)
-			tmpr = r;
-		else
-			prev_r1 = r;
-	}
-	prev_r0 = tmpr;
-	v=NULL;
-}
-**/
-
 void ROT::Server::getResult(std::string& query, int ran0, int ran1)
 {
 	Elgamal::CipherText et0;
@@ -359,11 +266,13 @@ int main(int argc, char** argv)
 	ROT::Client c;
 	std::string prvk = "prvkey";
 	std::string pubk = "pubkey";
+	c.core=1;
 
 	int row=30, column=100;
 	c.setParam(row, column, prvk, pubk);
 
 	ROT::Server s;
+	s.core=1;
 	int len = row*column;
 	int* input = (int*)malloc(sizeof(int)*len);
 	for(int i=0;i<len;i++){
