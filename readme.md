@@ -89,6 +89,7 @@ Software including any of those libraries is allowed to be used for commercial p
 # Contact Information
 
 * Kana Shimizu (kana-shimizu@aist.go.jp)
+* Gunnar Ratsch (Gunnar.Ratsch@ratschlab.org)
 
 # History
 
