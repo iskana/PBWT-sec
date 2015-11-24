@@ -1,7 +1,7 @@
-Copyright (c) 2015 SHIMIZU Kana
+Copyright (c) 2015 SHIMIZU Kana and Gunnar Raetsch
 All rights reserved.
 
-crypto-PBWT is distributed under the BSD 3-Clause License.
+PBWT-sec is distributed under the BSD 3-Clause License.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:

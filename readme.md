@@ -1,9 +1,9 @@
-# **crypto-PBWT**
+# **PBWT-sec**
 
-C++ implementation of crypto-PBWT
+C++ implementation of PBWT-sec
 
 # Summary
-This library provides for the implementation of the crypto-PBWT [1].
+This library provides for the implementation of the PBWT-sec [1].
 
 * [1] K. Shimizu, K.Nuida, G. R&auml;tsch, Efficient Privacy-Preserving String Search and an Application in Genomics [doi: http://dx.doi.org/10.1101/018267](http://biorxiv.org/content/early/2015/04/21/018267).
 
@@ -21,7 +21,7 @@ Create a working directory (e.g., work) and clone the following repositories.
 
        mkdir work
        cd work
-       git clone git://github.com/iskana/crypto-PBWT.git
+       git clone git://github.com/iskana/PBWT-sec.git
        git clone git://github.com/aistcrypt/Lifted-ElGamal.git
        git clone git://github.com/herumi/xbyak.git
        git clone git://github.com/herumi/mie.git
@@ -33,7 +33,7 @@ Create a working directory (e.g., work) and clone the following repositories.
 
 # Installation
 
-  cd crypto-PBWT/src
+  cd PBWT-sec/src
   make
 
 * use tcmalloc (optimal) for Linux; sudo apt-get install libgoogle-perftools-dev
@@ -42,7 +42,7 @@ Create a working directory (e.g., work) and clone the following repositories.
 	* OpenSSL
 	* GMP (libgmp-dev)
 
-# Running crypto-PBWT with a sample data
+# Running PBWT-sec with a sample data
 Server:
 		
 		mkdir /tmp/server
@@ -67,7 +67,7 @@ All rights reserved.
 
 # License
 
-crypto-PBWT (files in this repository) is distributed under the [BSD 3-Clause License] (http://opensource.org/licenses/BSD-3-Clause "The BSD 3-Clause License").
+PBWT-sec (files in this repository) is distributed under the [BSD 3-Clause License] (http://opensource.org/licenses/BSD-3-Clause "The BSD 3-Clause License").
 
 # Licenses of External Libraries
 
