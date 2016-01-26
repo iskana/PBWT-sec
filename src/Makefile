@@ -1,13 +1,14 @@
 TOPDIR:=$(realpath $(dir $(lastword $(MAKEFILE_LIST))))/
-CFLAGS=-O3
-CFLAGS+= -I$(TOPDIR)include -I$(TOPDIR)../../cybozulib/include/ -I$(TOPDIR)../../mie/include -I$(TOPDIR)../../xbyak/ -I$(TOPDIR)../../Lifted-ElGamal/include/ -I$(TOPDIR)../include/
-LDFLAGS+= -lgmp -lgmpxx -lcrypto
+CFLAGS=-O3 -g
+CFLAGS+= -I$(TOPDIR)include -I$(TOPDIR)../../cybozulib/include/ -I$(TOPDIR)../../mcl/include -I$(TOPDIR)../../xbyak/ -I$(TOPDIR)../include/
+LDFLAGS+= -lgmp -lgmpxx -lcrypto -lmcl -L../../mcl/lib/
 SERVER_OBJS=rot.o cpbwt.o comm.o server.o
 CLIENT_OBJS=rot.o cpbwt.o comm.o client.o
 CPBWT_OBJS=rot.o cpbwt.o cpbwt_main.o
 
-all: server client cpbwt
-
+all: server client cpbwt ../../mcl/lib/libmcl.a
+../../mcl/lib/libmcl.a:
+	make -C ../../mcl
 clean:
 	rm server client $(SERVER_OBJS) $(CLIENT_OBJS) *~
 

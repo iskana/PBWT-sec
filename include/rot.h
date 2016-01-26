@@ -2,19 +2,10 @@
 #include <fstream>
 #include <cybozu/random_generator.hpp>
 #include <cybozu/crypto.hpp>
-#include <mie/fp.hpp>
-#include <mie/gmp_util.hpp>
-#include <mie/elgamal.hpp>
-#include <mie/ecparam.hpp>
-#if defined(_WIN64) || defined(__x86_64__)
-#define USE_MONT_FP
-#endif
-#ifdef USE_MONTFP
-#include <mie/mont_fp.hpp>
-typedef mie::MontFpT<3> Fp;
-#else
-typedef mie::FpT<mie::Gmp> Fp;
-#endif
+#include <mcl/fp.hpp>
+#include <mcl/ec.hpp>
+#include <mcl/elgamal.hpp>
+#include <mcl/ecparam.hpp>
 
 #include <math.h>
 
@@ -23,11 +14,13 @@ typedef mie::FpT<mie::Gmp> Fp;
 //#include<sys/time.h>
 #include<sys/timeb.h>
 #include<omp.h>
+struct FpTag;
 struct ZnTag;
 
-typedef mie::EcT<Fp> Ec;
-typedef mie::FpT<mie::Gmp, ZnTag> Zn; // use ZnTag because Zn is different class with Fp
-typedef mie::ElgamalT<Ec, Zn> Elgamal;
+typedef mcl::FpT<FpTag, 192> Fp;
+typedef mcl::FpT<ZnTag, 192> Zn; // use ZnTag because Zn is different class with Fp
+typedef mcl::EcT<Fp> Ec;
+typedef mcl::ElgamalT<Ec, Zn> Elgamal;
 
 struct CipherTextVec : public std::vector<typename Elgamal::CipherText> {};
 
