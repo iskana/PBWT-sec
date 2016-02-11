@@ -50,7 +50,7 @@ void CPBWT::Server::readPBWT(int m, int n, std::string pbwtfile)
 {
 	snps=n;
 	samples=m;
-	pbwt.resize(n*n);
+	pbwt.resize(m*n);
 	std::ifstream ifs(pbwtfile.c_str());
 	std::string tmp;
 	char ch;
