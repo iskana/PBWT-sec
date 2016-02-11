@@ -58,9 +58,7 @@ void CPBWT::Server::readPBWT(int m, int n, std::string pbwtfile)
 		ifs >> tmp;
 		for (int i=0;i<m;i++){
 			ch = tmp[i];
-			if(ch=='1'){
-				pbwt[j*m+i] = 1;
-			}
+			pbwt[j*m+i] = (ch == '1') ? 1 : 0;
 		}
 	}
 }
