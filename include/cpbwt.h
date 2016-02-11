@@ -5,7 +5,7 @@ namespace CPBWT{
 	{
 		int prev_fr0, prev_fr1;
 		int prev_gr0, prev_gr1;
-		int *pbwt;
+		std::vector<int> pbwt;
 		int *v; //lookuptables
 		CipherTextVec efq, egq;
 		Elgamal::CipherText efp, egp;

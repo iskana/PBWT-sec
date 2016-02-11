@@ -50,7 +50,7 @@ void CPBWT::Server::readPBWT(int m, int n, std::string pbwtfile)
 {
 	snps=n;
 	samples=m;
-	pbwt = (int *)malloc(sizeof(int)*m*n);
+	pbwt.resize(n*n);
 	std::ifstream ifs(pbwtfile.c_str());
 	std::string tmp;
 	char ch;
@@ -58,14 +58,8 @@ void CPBWT::Server::readPBWT(int m, int n, std::string pbwtfile)
 		ifs >> tmp;
 		for (int i=0;i<m;i++){
 			ch = tmp[i];
-			if(ch=='1')
-			switch(ch){
-			case '0':
-				pbwt[j*m+i] = 0;
-				break;
-			case '1':
+			if(ch=='1'){
 				pbwt[j*m+i] = 1;
-				break;
 			}
 		}
 	}
