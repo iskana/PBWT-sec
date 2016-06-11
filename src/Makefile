@@ -10,7 +10,7 @@ all: server client cpbwt ../../mcl/lib/libmcl.a
 ../../mcl/lib/libmcl.a:
 	make -C ../../mcl
 clean:
-	rm server client $(SERVER_OBJS) $(CLIENT_OBJS) *~
+	rm -rf server client $(SERVER_OBJS) $(CLIENT_OBJS) *~
 
 .SUFFIXES: .cpp
 
@@ -23,8 +23,10 @@ cpbwt: $(CPBWT_OBJS)
 
 server: $(SERVER_OBJS)
 	$(CXX) $(SERVER_OBJS) -o $@ $(LDFLAGS) -fopenmp
+	mkdir -p $(TOPDIR)../bin/
 	mv server $(TOPDIR)../bin/
 
 client: $(CLIENT_OBJS)
 	$(CXX) $(CLIENT_OBJS) -o $@ $(LDFLAGS) -fopenmp
+	mkdir -p $(TOPDIR)../bin/
 	mv client $(TOPDIR)../bin/

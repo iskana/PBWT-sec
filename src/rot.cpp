@@ -8,9 +8,9 @@ cybozu::RandomGenerator rg;
 void ROT::SysInit()
 {
 	const mcl::EcParam& para = mcl::ecparam::secp192k1;
-	Zn::setModulo(para.n);
-	Fp::setModulo(para.p);
-	Ec::setParam(para.a, para.b);
+	Zn::init(para.n);
+	Fp::init(para.p);
+	Ec::init(para.a, para.b);
 }
 
 void ROT::Server::setV(int* input, int length, int row, int column)

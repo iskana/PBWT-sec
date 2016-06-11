@@ -14,11 +14,9 @@
 //#include<sys/time.h>
 #include<sys/timeb.h>
 #include<omp.h>
-struct FpTag;
-struct ZnTag;
 
-typedef mcl::FpT<FpTag, 192> Fp;
-typedef mcl::FpT<ZnTag, 192> Zn; // use ZnTag because Zn is different class with Fp
+typedef mcl::FpT<mcl::FpTag, 192> Fp;
+typedef mcl::FpT<mcl::ZnTag, 192> Zn; // use ZnTag because Zn is different class with Fp
 typedef mcl::EcT<Fp> Ec;
 typedef mcl::ElgamalT<Ec, Zn> Elgamal;
 
