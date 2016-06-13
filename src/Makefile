@@ -6,9 +6,10 @@ SERVER_OBJS=rot.o cpbwt.o comm.o server.o
 CLIENT_OBJS=rot.o cpbwt.o comm.o client.o
 CPBWT_OBJS=rot.o cpbwt.o cpbwt_main.o
 
-all: server client cpbwt ../../mcl/lib/libmcl.a
+MCL_LIB=../../mcl/lib/libmcl.a
+all: server client cpbwt $(MCL_LIB)
 ../../mcl/lib/libmcl.a:
-	make -C ../../mcl
+	make -C ../../mcl USE_LLVM=0
 clean:
 	rm -rf server client $(SERVER_OBJS) $(CLIENT_OBJS) *~
 
@@ -17,16 +18,16 @@ clean:
 .cpp.o:
 	$(CXX) -c $< -o $@ $(CFLAGS) -fopenmp
 
-cpbwt: $(CPBWT_OBJS)
+cpbwt: $(CPBWT_OBJS) $(MCL_LIB)
 	$(CXX) $(CPBWT_OBJS) -o $@ $(LDFLAGS) -fopenmp
 	mv cpbwt $(TOPDIR)../bin/
 
-server: $(SERVER_OBJS)
+server: $(SERVER_OBJS) $(MCL_LIB)
 	$(CXX) $(SERVER_OBJS) -o $@ $(LDFLAGS) -fopenmp
 	mkdir -p $(TOPDIR)../bin/
 	mv server $(TOPDIR)../bin/
 
-client: $(CLIENT_OBJS)
+client: $(CLIENT_OBJS) $(MCL_LIB)
 	$(CXX) $(CLIENT_OBJS) -o $@ $(LDFLAGS) -fopenmp
 	mkdir -p $(TOPDIR)../bin/
 	mv client $(TOPDIR)../bin/
