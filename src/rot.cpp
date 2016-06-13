@@ -7,10 +7,10 @@ cybozu::RandomGenerator rg;
 
 void ROT::SysInit()
 {
-	const mie::EcParam& para = mie::ecparam::secp192k1;
-	Zn::setModulo(para.n);
-	Fp::setModulo(para.p);
-	Ec::setParam(para.a, para.b);
+	const mcl::EcParam& para = mcl::ecparam::secp192k1;
+	Zn::init(para.n);
+	Fp::init(para.p);
+	Ec::init(para.a, para.b);
 }
 
 void ROT::Server::setV(int* input, int length, int row, int column)
@@ -161,11 +161,11 @@ void ROT::Server::makeResFile(std::string& result)
 	L0 = row;
 	L1 = column;
 	
-	const mie::EcParam& para = mie::ecparam::secp192k1;
+	const mcl::EcParam& para = mcl::ecparam::secp192k1;
 	const Fp x0(para.gx);
 	const Fp y0(para.gy);
 	const Ec P(x0, y0);
-	const size_t bitLen = Zn(-1).getBitLen();
+	const size_t bitLen = para.bitSize;
 
 	Elgamal::PrivateKey prvt;
 	prvt.init(P, bitLen, rg);

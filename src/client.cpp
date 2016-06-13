@@ -76,8 +76,8 @@ int main(int argc, char** argv)
 	all_s = get_wall_time();
 	wts = get_wall_time();
 
-	CPBWT::Client c;
 	ROT::SysInit();
+	CPBWT::Client c;
 
 	std::ifstream ifs;
 	std::ofstream ofs;
