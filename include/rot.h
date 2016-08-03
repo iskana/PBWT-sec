@@ -20,7 +20,7 @@ typedef mcl::FpT<mcl::ZnTag, 192> Zn; // use ZnTag because Zn is different class
 typedef mcl::EcT<Fp> Ec;
 typedef mcl::ElgamalT<Ec, Zn> Elgamal;
 
-struct CipherTextVec : public std::vector<typename Elgamal::CipherText> {};
+struct CipherTextVec : public std::vector<Elgamal::CipherText> {};
 
 namespace ROT{
 	void SysInit();
