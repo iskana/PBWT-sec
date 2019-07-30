@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
 #include <cybozu/random_generator.hpp>
 #include <cybozu/crypto.hpp>
 #include <mcl/fp.hpp>
