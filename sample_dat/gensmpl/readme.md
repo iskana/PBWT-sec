@@ -9,10 +9,10 @@ The program outputs pbwt of m by n upper-left submatrix of the input SNPs matrix
 The original m by n SNPs matrix is output to STDERR.
 
 # Compile
-  g++ cvSNPSeq2pbwt.cpp -o cvSNPSeq2pbwt
+		g++ cvSNPSeq2pbwt.cpp -o cvSNPSeq2pbwt
 
 # Example for generating & testing pbwt of 20 by 100 SNPs matrix
-  cvSNPSeq2pbwt 20 100 smpl.snps >1.pbwt  2>1.snps
+		cvSNPSeq2pbwt 20 100 smpl.snps >1.pbwt  2>1.snps
 
 Server:
 		
