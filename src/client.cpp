@@ -96,6 +96,7 @@ int main(int argc, char** argv)
 	ifs.open(qfile, std::ios::binary);
 	int tmp, stmp;
 	ifs >> q;
+	q += "00";
 	if(ifs.eof()){
 		std::cerr<<"invalid param file:"<<qfile<<"\n";
 		exit(1);
@@ -228,7 +229,7 @@ int main(int argc, char** argv)
 			isL=c.chkIsLongest(ismatch);
 			std::cerr<<"is longest? (yes:0, no:-1)"<<isL<<"\n";
 			if(isL==0)
-				maxmatch = i;
+				maxmatch = i - 1;
 		
 			if(i+1 != q.size()){
 				ff += (q[i+1]-zero)*blk;
@@ -239,9 +240,10 @@ int main(int argc, char** argv)
 			std::cerr<<"receive dummy\n";
 		}
 		wte = get_wall_time();
-	    calc_total += wte - wts;	
+	    calc_total += wte - wts;
 	}
 
+	if(isL!=0 || maxmatch > q.size() -2){ maxmatch = q.size() - 2;}
 	std::cerr<<maxmatch<<"-mer match\n";
 	for(int i=0;i<maxmatch;i++)
 		std::cerr<<q[i];
